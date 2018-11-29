@@ -1,5 +1,6 @@
 package com.codecool.bbbt.huntapped.backend.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,14 +15,13 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Brewery {
+public class Venue {
 
-    @Id @GeneratedValue
-    private Long id;
+    private @Id @GeneratedValue Long id;
     private String name;
     private String country;
-    private String description;
-    private double rating;
-    private int numberOfRatings;
-
+    private String address;
+    private String phoneNumber;
+    private String facebookLink;
+    private VenueType type;
 }

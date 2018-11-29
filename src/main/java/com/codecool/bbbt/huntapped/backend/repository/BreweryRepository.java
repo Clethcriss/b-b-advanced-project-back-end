@@ -13,4 +13,6 @@ public interface BreweryRepository extends JpaRepository<Brewery, Long> {
     Brewery getBreweryByName(@Param("name") String name);*/
 
     Brewery findBreweryByName(String name);
+
+    Brewery findBreweryById(Long id);
 }

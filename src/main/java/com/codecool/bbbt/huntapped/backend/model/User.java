@@ -14,14 +14,11 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Brewery {
+public class User {
 
-    @Id @GeneratedValue
-    private Long id;
+    private @Id @GeneratedValue Long id;
     private String name;
-    private String country;
-    private String description;
-    private double rating;
-    private int numberOfRatings;
+    private String nickName;
+    private int totalCheckIns;
 
 }

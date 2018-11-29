@@ -19,7 +19,8 @@ public class Beer {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private Type type;
+    private Long breweryId;
+    private String type;
     private int ibu;
     private double abv;
     private double rating;
