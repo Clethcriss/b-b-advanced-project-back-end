@@ -1,5 +1,7 @@
 package com.codecool.bbbt.huntapped.backend.model;
 
+import lombok.Builder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,10 +10,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Builder
 @Table(name = "user")
 public class User {
     private Long id;
     private String username;
+    private String name;
+    private String nickName;
+    @Transient
+    private int totalCheckIns;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
