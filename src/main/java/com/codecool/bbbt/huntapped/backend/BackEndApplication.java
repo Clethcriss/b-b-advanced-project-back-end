@@ -5,6 +5,7 @@ import com.codecool.bbbt.huntapped.backend.repository.BeerRepository;
 import com.codecool.bbbt.huntapped.backend.repository.BreweryRepository;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import com.codecool.bbbt.huntapped.backend.repository.VenueRepository;
+import lombok.extern.slf4j.XSlf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,7 +132,7 @@ public class BackEndApplication {
                     .address("33 Kertész u. Budapest")
                     .country("Hungary")
                     .phoneNumber("+3617855568")
-                    .facebookLink("https://facebook.com/")
+                    .facebookLink("https://facebook.com/KandalloPub")
                     .type(VenueType.GASTROPUB)
                     .build());
 
