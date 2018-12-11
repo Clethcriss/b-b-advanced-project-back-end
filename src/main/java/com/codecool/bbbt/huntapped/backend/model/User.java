@@ -18,7 +18,7 @@ public class User {
 
     private @Id @GeneratedValue Long id;
     private String name;
-    private String nick;
+    private String nickName;
     private int totalCheckIns;
 
 }
