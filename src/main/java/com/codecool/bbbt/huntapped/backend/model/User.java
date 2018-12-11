@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
-@Entity
+@Entity(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -18,7 +18,7 @@ public class User {
 
     private @Id @GeneratedValue Long id;
     private String name;
-    private String nickName;
+    private String nick;
     private int totalCheckIns;
 
 }
