@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface BreweryRepository extends JpaRepository<Brewery, Long> {
 
 
@@ -12,7 +14,7 @@ public interface BreweryRepository extends JpaRepository<Brewery, Long> {
     /*@Query("SELECT * FROM brewery WHERE name IS :name")
     Brewery getBreweryByName(@Param("name") String name);*/
 
-    Brewery findBreweryByName(String name);
+    List<Brewery> findByNameContainingIgnoreCase(String nameChunk);
 
     Brewery findBreweryById(Long id);
 }

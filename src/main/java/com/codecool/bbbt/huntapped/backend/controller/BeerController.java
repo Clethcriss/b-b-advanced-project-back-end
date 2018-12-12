@@ -29,8 +29,6 @@ public class BeerController {
     @GetMapping("/search/{value}")
     public List<Beer> getBeerByNameChunk(@PathVariable("value") String nameChunk) {
         List<Beer> beers = beerRepository.findByNameContainingIgnoreCase(nameChunk);
-        LOGGER.info("Search result: " + beers.toString());
-
+        LOGGER.info("Result of the search on beers: " + beers.toString());
         return beers;}
-
 }
