@@ -40,7 +40,7 @@ public class BackEndApplication {
         SpringApplication.run(BackEndApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner init() {
         return args -> {
             List<Beer> beers = new ArrayList<>();
@@ -162,7 +162,7 @@ public class BackEndApplication {
             }
             userRepository.save(user);
         };
-    }
+    }*/
 
     @PostConstruct
     public void afterInit() {
