@@ -2,6 +2,7 @@ package com.codecool.bbbt.huntapped.backend.controller;
 
 import com.auth0.jwt.JWT;
 import com.codecool.bbbt.huntapped.backend.model.LoginForm;
+import com.codecool.bbbt.huntapped.backend.model.RegisterForm;
 import com.codecool.bbbt.huntapped.backend.model.Users;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -33,10 +34,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public boolean registerUser(@RequestBody LoginForm loginForm){
-        log.info("Registering user with username: {} password: {}", loginForm.getUsername(),loginForm.getPassword());
-        loginForm.setPassword(bCryptPasswordEncoder.encode(loginForm.getPassword()));
-        Users newUsers = new Users(loginForm);
+    public boolean registerUser(@RequestBody RegisterForm registerForm){
+        log.info("Registering user with user: {}", registerForm);
+        registerForm.setPassword(bCryptPasswordEncoder.encode(registerForm.getPassword()));
+        Users newUsers = new Users(registerForm);
         userRepository.save(newUsers);
         return true;
     }

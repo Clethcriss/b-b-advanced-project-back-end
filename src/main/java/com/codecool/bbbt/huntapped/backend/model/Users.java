@@ -29,10 +29,18 @@ public class Users {
     private int totalCheckIns;
     private String password;
     private String passwordConfirm;
+    private String email;
 
     public Users(LoginForm loginForm){
         this.username = loginForm.getUsername();
         this.password = loginForm.getPassword();
+    }
+
+    public Users (RegisterForm registerForm){
+        this.username = registerForm.getUsername();
+        this.password = registerForm.getPassword();
+        this.name = registerForm.getName();
+        this.email = registerForm.getEmail();
     }
 
 }
