@@ -36,6 +36,7 @@ public class BackEndApplication {
     @Autowired
     BreweryRepository breweryRepository;
 
+
     public static void main(String[] args) {
         SpringApplication.run(BackEndApplication.class, args);
     }
@@ -166,6 +167,6 @@ public class BackEndApplication {
 
     @PostConstruct
     public void afterInit() {
-        log.info(beerRepository.findAll().toString());
+        log.info("Server test bean log");
     }
 }

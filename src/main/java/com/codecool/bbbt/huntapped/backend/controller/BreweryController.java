@@ -20,14 +20,17 @@ public class BreweryController {
     @Autowired
     private BreweryRepository breweryRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id={id}")
     public Brewery getBrewery(@PathVariable("id") Long id) {
         return breweryRepository.findBreweryById(id);
     }
 
-    @GetMapping("/search/{value}")
+    @GetMapping("/search={value}")
     public List<Brewery> findBreweries(@PathVariable("value") String nameChunk) {
-        List<Brewery> breweries = breweryRepository.findByNameContainingIgnoreCase(nameChunk);
+        List<Brewery> breweries = new ArrayList<>();
+        if (nameChunk != "" || nameChunk != null) {
+            breweries = breweryRepository.findByNameContainingIgnoreCase(nameChunk);
+        }
         log.info("Result of the search on breweries: " + breweries.toString());
         return breweries;
     }
