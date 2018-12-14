@@ -3,6 +3,7 @@ package com.codecool.bbbt.huntapped.backend.controller;
 import com.auth0.jwt.JWT;
 import com.codecool.bbbt.huntapped.backend.model.LoginForm;
 import com.codecool.bbbt.huntapped.backend.model.RegisterForm;
+import com.codecool.bbbt.huntapped.backend.model.ResponseString;
 import com.codecool.bbbt.huntapped.backend.model.Users;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -43,18 +44,19 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginForm loginForm){
+    public ResponseString login(@RequestBody LoginForm loginForm){
         Users user = userRepository.findUserByUsername(loginForm.getUsername());
         if (user != null){
             log.info("User logged in with user:{}", user);
             if(bCryptPasswordEncoder.matches(loginForm.getPassword(), user.getPassword())){
-                return JWT.create()
-                    .withSubject(user.getUsername())
-                    .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                    .sign(HMAC512(SECRET.getBytes()));
+                ResponseString responseString = new ResponseString(JWT.create()
+                        .withSubject(user.getUsername())
+                        .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                        .sign(HMAC512(SECRET.getBytes())));
+                return responseString;
             }
         }
         log.warn("Log in with username: {} failed!",loginForm.getUsername());
-        return null;
+        return new ResponseString();
     }
 }
