@@ -16,7 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +39,7 @@ public class BackEndApplication {
     public static void main(String[] args) {
         SpringApplication.run(BackEndApplication.class, args);
     }
+
 
     /*@Bean
     public CommandLineRunner init() {
@@ -146,11 +146,6 @@ public class BackEndApplication {
                     .type(VenueType.BAR)
                     .build());
 
-            User user = User.builder()
-                    .name("Beer Drinker")
-                    .nickName("FancyDrunk32")
-                    .totalCheckIns(0)
-                    .build();
 
             for (Beer beer : beers) {
                 beerRepository.save(beer);
@@ -161,7 +156,6 @@ public class BackEndApplication {
             for (Venue venue : venues) {
                 venueRepository.save(venue);
             }
-            userRepository.save(user);
         };
     }*/
 
