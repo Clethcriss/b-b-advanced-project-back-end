@@ -1,6 +1,6 @@
 package com.codecool.bbbt.huntapped.backend.controller;
 
-import com.codecool.bbbt.huntapped.backend.model.User;
+import com.codecool.bbbt.huntapped.backend.model.Users;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class UsersController {
     UserRepository userRepository;
 
     @GetMapping("/users")
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return userRepository.findAll();
     }
 }
