@@ -24,4 +24,5 @@
 /nbdist/
 /.nb-gradle/
 
-### Idea ###
+### Application properties ###
+/src/main/resources/application.properties
