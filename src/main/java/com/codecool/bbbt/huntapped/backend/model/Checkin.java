@@ -26,4 +26,7 @@ public class Checkin {
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private Users user;
+
+    @Lob
+    private String comment;
 }
