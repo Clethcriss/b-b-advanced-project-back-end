@@ -41,7 +41,7 @@ public class BackEndApplication {
     }
 
 
-    /*@Bean
+    @Bean
     public CommandLineRunner init() {
         return args -> {
             List<Beer> beers = new ArrayList<>();
@@ -157,7 +157,7 @@ public class BackEndApplication {
                 venueRepository.save(venue);
             }
         };
-    }*/
+    }
 
     @PostConstruct
     public void afterInit() {
