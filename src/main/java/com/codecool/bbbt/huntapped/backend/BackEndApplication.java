@@ -5,6 +5,7 @@ import com.codecool.bbbt.huntapped.backend.repository.BeerRepository;
 import com.codecool.bbbt.huntapped.backend.repository.BreweryRepository;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import com.codecool.bbbt.huntapped.backend.repository.VenueRepository;
+import lombok.extern.slf4j.Slf4j;
 import lombok.extern.slf4j.XSlf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +15,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @SpringBootApplication
 public class BackEndApplication {
 
@@ -34,14 +35,13 @@ public class BackEndApplication {
     @Autowired
     BreweryRepository breweryRepository;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BackEndApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(BackEndApplication.class, args);
     }
 
 
-    @Bean
+    /*@Bean
     public CommandLineRunner init() {
         return args -> {
             List<Beer> beers = new ArrayList<>();
@@ -157,10 +157,10 @@ public class BackEndApplication {
                 venueRepository.save(venue);
             }
         };
-    }
+    }*/
 
     @PostConstruct
     public void afterInit() {
-        LOGGER.info(beerRepository.findAll().toString());
+        log.info("Server test bean log");
     }
 }

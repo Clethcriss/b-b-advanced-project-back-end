@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "user")
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue
@@ -25,7 +25,6 @@ public class Users {
     private String username;
     private String name;
     private String nickName;
-    @Transient
     private int totalCheckIns;
     private String password;
     private String passwordConfirm;

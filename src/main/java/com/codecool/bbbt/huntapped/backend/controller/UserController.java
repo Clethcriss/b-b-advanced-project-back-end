@@ -39,6 +39,7 @@ public class UserController {
         log.info("Registering user with user: {}", registerForm);
         registerForm.setPassword(bCryptPasswordEncoder.encode(registerForm.getPassword()));
         Users newUsers = new Users(registerForm);
+        newUsers.setTotalCheckIns(0);
         userRepository.save(newUsers);
         return true;
     }
