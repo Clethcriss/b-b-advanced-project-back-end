@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -19,13 +18,13 @@ public class Beer {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private Long breweryId;
     private String type;
     private int ibu;
     private double abv;
     private double rating;
-    private String brewery;
+    // Many-to-One relationship
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    private Brewery brewery;
     private String description;
     private int numberOfRatings;
-
 }
