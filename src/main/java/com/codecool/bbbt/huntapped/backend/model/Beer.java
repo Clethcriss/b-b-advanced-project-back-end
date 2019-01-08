@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 
@@ -25,6 +24,7 @@ public class Beer {
     // Many-to-One relationship
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     private Brewery brewery;
+    @Column(length=1000)
     private String description;
     private int numberOfRatings;
 }

@@ -47,12 +47,11 @@ public class BackEndApplication {
             List<Beer> horizontBeers = new ArrayList<>();
             List<Beer> balkezesBeers = new ArrayList<>();
             List<Beer> parodyBeers = new ArrayList<>();
-            List<Brewery> breweries = new ArrayList<>();
             List<Venue> venues = new ArrayList<>();
             horizontBeers.add(Beer.builder()
                     .name("Night Shift (Vintage 2018)")
                     .abv(10.0)
-                    .description("blank")
+                    .description("Our annual imperial stout. This year it hits an easy 10% ABV, more creamy and thick, with hints of dark chocolate and coffee. No fuss, just darkness.")
                     .ibu(0)
                     .rating(0)
                     .numberOfRatings(0)
@@ -63,7 +62,7 @@ public class BackEndApplication {
             horizontBeers.add(Beer.builder()
                     .name("Gentle Bastard IPA")
                     .abv(6.5)
-                    .description("blank")
+                    .description("Kellemes világos narancs színű Amerikai IPA, amely szépen hozza a felhasznált amerikai komlók ízeit - Columbus, Simcoe, Mosaic, Amarillo - mellette a malátás profil is szépen előtérben marad. Egy nagy adag hidegkomlónak köszönhetően szépen jönnek a gyümölcsös jegyek, amelyek teljessé teszik a sört.")
                     .ibu(63)
                     .rating(0)
                     .numberOfRatings(0)
@@ -74,7 +73,9 @@ public class BackEndApplication {
             horizontBeers.add(Beer.builder()
                     .name("Rice Rice Baby")
                     .abv(6.5)
-                    .description("blank")
+                    .description("Három világ találkozozása: rizses árpabor, szaké élesztő, tokaji aszús hordó. Komplex, gyümölcsösen illatos, hordós ízjegyek. \n" +
+                            "\n" +
+                            "Three worlds collide: rice barley wine, saké yeast, tokaj aszú wine barrels. Complex, fruity and oak notes. Drink next to the fireplace! ")
                     .ibu(40)
                     .rating(0)
                     .numberOfRatings(0)
@@ -115,7 +116,9 @@ public class BackEndApplication {
 
             balkezesBeers.add(Beer.builder()
                     .name("Peeping Tom")
-                    .description("blabla")
+                    .description("Peeping Tom egy 1960-as brit horror / thriller. Meg Mike Patton második legfogyaszthatóbb bandájának a neve. A mozi nem hagyott nagy nyomot így csak a megjelenésben merítettünk belőle, a Peeping Tom albumot viszont sokat hallgattuk a Balkezesnél mikor az első kisüzemi American Pale Ale-en dolgoztunk.\n" +
+                            "\n" +
+                            "Egy kiforrott pale ale alapba először Simcoe komlót tettünk, hogy a kellő keserűséget elérjük. Majd még Simcoet, hogy a citrusos, picit mangós aromája meglegyen, és megSimcoeztuk, hogy egyértelműen kijöjjenek a Simcoe különös fenyős, földes jellegzetességei is. Aztán levezetésnek Simcoe. És mivel ezt így illik, egy ijesztő adaggal hidegSimcoeztunk erjedés után, biztos ami biztos.")
                     .abv(5.3)
                     .ibu(37)
                     .rating(0)
@@ -125,7 +128,17 @@ public class BackEndApplication {
 
             balkezesBeers.add(Beer.builder()
                     .name("Blood, Love, Rhetoric\n")
-                    .description("blank")
+                    .description("\"Well, we can do you blood and love without the rhetoric, and we can do you blood and rhetoric without the love, and we can do you all three concurrent or consecutive. But we can't give you love and rhetoric without the blood. \n" +
+                            "\n" +
+                            "Blood is compulsory.\" \n" +
+                            "\n" +
+                            "― Tom Stoppard, Rosencrantz and Guildenstern are Dead\n" +
+                            "\n" +
+                            "A collaboration beer of Balkezes (HU) and Heist Craft (UK) for the event of Beer Week in Budapest 2018.\n" +
+                            "\n" +
+                            "a Blood Orange DIPA with the approach to mix the traditional american IPA with the hop burst New England style, and top up the whole with blood orange stuff. fruit content is close to ~300g for each liter.\n" +
+                            "\n" +
+                            "hops used: Mosaic, Magnum, Mandarina Bavaria, Amarillo")
                     .abv(7.8)
                     .ibu(85)
                     .rating(0)
