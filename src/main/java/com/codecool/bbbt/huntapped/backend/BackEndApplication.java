@@ -15,6 +15,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,13 @@ public class BackEndApplication {
             List<Beer> beers = new ArrayList<>();
             List<Brewery> breweries = new ArrayList<>();
             List<Venue> venues = new ArrayList<>();
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.setPassword("$2a$10$l5cacemAtavBqXEU82vHx.iu8RosSPoTC2u3fqMlYL43wnDYUaP06");
+            registerForm.setEmail("admin@admin.com");
+            registerForm.setName("admin");
+            registerForm.setUsername("admin");
+            Users admin = new Users(registerForm);
+            userRepository.save(admin);
             beers.add(Beer.builder()
                     .name("Gentle Bastard IPA")
                     .brewery("HORIZONT BREWING")

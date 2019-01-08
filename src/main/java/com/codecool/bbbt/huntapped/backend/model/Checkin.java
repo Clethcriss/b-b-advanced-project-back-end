@@ -1,8 +1,13 @@
 package com.codecool.bbbt.huntapped.backend.model;
 
+import com.codecool.bbbt.huntapped.backend.repository.BeerRepository;
+import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
+import com.codecool.bbbt.huntapped.backend.repository.VenueRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -10,6 +15,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class Checkin {
 
     @Id
@@ -28,5 +34,7 @@ public class Checkin {
     private Users user;
 
     @Lob
-    private String comment;
+    private String description;
+
+
 }
