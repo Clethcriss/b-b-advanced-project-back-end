@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -27,11 +26,11 @@ public class BreweryController {
 
     @GetMapping("/search={value}")
     public List<Brewery> findBreweries(@PathVariable("value") String nameChunk) {
-        List<Brewery> breweries = new ArrayList<>();
-        if (nameChunk != "" || nameChunk != null) {
-            breweries = breweryRepository.findByNameContainingIgnoreCase(nameChunk);
-        }
+        List<Brewery> breweries = breweryRepository.findByNameContainingIgnoreCase(nameChunk);
+
+        // [INFO]
         log.info("Result of the search on breweries: " + breweries.toString());
+
         return breweries;
     }
 }

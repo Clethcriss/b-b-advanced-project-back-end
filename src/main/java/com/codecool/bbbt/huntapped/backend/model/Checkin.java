@@ -31,7 +31,7 @@ public class Checkin {
     private Venue venue;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    private Users user;
+    private User user;
 
     @Lob
     private String description;

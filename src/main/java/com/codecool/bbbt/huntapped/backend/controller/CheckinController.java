@@ -32,7 +32,7 @@ public class CheckinController {
         log.info("Creating checkin with form: " + checkinForm.toString());
         Beer beer = beerRepository.getBeerById(checkinForm.getBeerId());
         Venue venue = venueRepository.findVenueById(checkinForm.getVenueId());
-        Users user = userRepository.findUserByUsername(checkinForm.getUsername());
+        User user = userRepository.findUserByUsername(checkinForm.getUsername());
         Checkin checkin = new Checkin();
         checkin.setBeer(beer);
         checkin.setDescription(checkinForm.getDescription());

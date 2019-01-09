@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
@@ -18,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue
     private Long id;
@@ -30,12 +29,12 @@ public class Users {
     private String passwordConfirm;
     private String email;
 
-    public Users(LoginForm loginForm){
+    public User(LoginForm loginForm){
         this.username = loginForm.getUsername();
         this.password = loginForm.getPassword();
     }
 
-    public Users (RegisterForm registerForm){
+    public User(RegisterForm registerForm){
         this.username = registerForm.getUsername();
         this.password = registerForm.getPassword();
         this.name = registerForm.getName();
