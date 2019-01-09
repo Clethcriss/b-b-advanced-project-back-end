@@ -1,5 +1,6 @@
 package com.codecool.bbbt.huntapped.backend.config;
 
+import com.codecool.bbbt.huntapped.backend.security.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +22,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable()
+        http.csrf().disable().addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 .authorizeRequests()
-                .antMatchers("/api/**").permitAll()
-                .anyRequest().authenticated()
-                .and();
+                .antMatchers("/api/checkin").authenticated()
+                .and()
+                .authorizeRequests().antMatchers("/api/**").permitAll();
     }
 
 

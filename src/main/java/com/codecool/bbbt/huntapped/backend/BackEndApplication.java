@@ -41,6 +41,13 @@ public class BackEndApplication {
     @Bean
     public CommandLineRunner init() {
         return args -> {
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.setPassword("$2a$10$l5cacemAtavBqXEU82vHx.iu8RosSPoTC2u3fqMlYL43wnDYUaP06");
+            registerForm.setEmail("admin@admin.com");
+            registerForm.setName("admin");
+            registerForm.setUsername("admin");
+            User admin = new User(registerForm);
+            userRepository.save(admin);
             List<Beer> horizontBeers = new ArrayList<>();
             List<Beer> balkezesBeers = new ArrayList<>();
             List<Beer> parodyBeers = new ArrayList<>();
