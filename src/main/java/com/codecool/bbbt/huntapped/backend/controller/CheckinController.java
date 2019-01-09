@@ -40,7 +40,7 @@ public class CheckinController {
         checkin.setUser(user);
         checkin.setVenue(venue);
         checkinRepository.save(checkin);
-        log.info("Checkin saved: " + checkin);
+        log.info("User: {} checked in beer {} with a rating: {}",checkin.getUser().getUsername(), checkin.getBeer(),checkin.getRating());
         return true;
     }
 }

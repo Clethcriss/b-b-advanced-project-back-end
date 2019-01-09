@@ -27,7 +27,7 @@ public class Checkin {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Beer beer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private Venue venue;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
