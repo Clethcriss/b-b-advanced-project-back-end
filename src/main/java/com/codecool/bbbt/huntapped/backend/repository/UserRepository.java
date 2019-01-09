@@ -1,10 +1,11 @@
 package com.codecool.bbbt.huntapped.backend.repository;
 
-import com.codecool.bbbt.huntapped.backend.model.Users;
+import com.codecool.bbbt.huntapped.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<Users, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Users findUserById(Long id);
-    Users findUserByUsername(String username);
+    User findUserById(Long id);
+    User findUserByUsername(String username);
+    User findUserByEmail(String email);
 }
