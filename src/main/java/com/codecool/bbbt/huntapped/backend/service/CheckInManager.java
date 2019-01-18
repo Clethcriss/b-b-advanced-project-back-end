@@ -3,15 +3,31 @@ package com.codecool.bbbt.huntapped.backend.service;
 import com.codecool.bbbt.huntapped.backend.model.*;
 import com.codecool.bbbt.huntapped.backend.repository.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Slf4j
+@Service
 public class CheckInManager {
+    @Autowired
+    CheckinRepository checkinRepository;
+
+    @Autowired
+    BeerRepository beerRepository;
+
+    @Autowired
+    VenueRepository venueRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    BreweryRepository breweryRepository;
 
 
-
-    public static void changeBeerRating(CheckinRepository checkinRepository, Beer beer, BeerRepository beerRepository){
+    public void changeBeerRating(Beer beer){
 
         List<Checkin> allCheckins = checkinRepository.findByBeer(beer);
         double sumOfRatings = 0;
@@ -22,10 +38,10 @@ public class CheckInManager {
         avgRating = Math.round(avgRating * 100.0) / 100.0;
         Integer numberOfRatings = allCheckins.size();
         beerRepository.updateBeerRatingByBeerId(beer.getId(), avgRating, numberOfRatings);
-
+        this.changeBreweryRating(beer);
     }
 
-    public static void changeBreweryRating(BreweryRepository breweryRepository, BeerRepository beerRepository,Beer beer){
+    public void changeBreweryRating(Beer beer){
 
         Brewery brewery = breweryRepository.findBreweryById(beer.getBrewery().getId());
         List<Beer> beersByBrewery = beerRepository.findByBrewery(brewery);
@@ -45,8 +61,7 @@ public class CheckInManager {
 
     }
 
-    public static Beer createCheckin(BeerRepository beerRepository, VenueRepository venueRepository,
-                                     UserRepository userRepository, CheckinRepository checkinRepository, CheckinForm checkinForm){
+    public Beer createCheckin(CheckinForm checkinForm){
 
         Beer beer = beerRepository.getBeerById(checkinForm.getBeerId());
         Venue venue = venueRepository.findVenueById(checkinForm.getVenueId());
@@ -59,6 +74,7 @@ public class CheckInManager {
         checkin.setVenue(venue);
         checkinRepository.save(checkin);
         log.info("User: {} checked in beer {} with a rating: {}",checkin.getUser().getUsername(), checkin.getBeer(),checkin.getRating());
+        this.changeBeerRating(beer);
         return beer;
     }
 }

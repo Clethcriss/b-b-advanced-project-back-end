@@ -16,28 +16,13 @@ import java.util.List;
 public class CheckinController {
 
     @Autowired
-    CheckinRepository checkinRepository;
-
-    @Autowired
-    BeerRepository beerRepository;
-
-    @Autowired
-    VenueRepository venueRepository;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    BreweryRepository breweryRepository;
+    CheckInManager checkInManager;
 
     @PostMapping
     public boolean checkin(@RequestBody CheckinForm checkinForm){
         log.info("Creating checkin with form: " + checkinForm.toString());
 
-        Beer beer = CheckInManager.createCheckin(beerRepository,venueRepository,userRepository,checkinRepository,checkinForm);
-        CheckInManager.changeBeerRating(checkinRepository,beer,beerRepository);
-        CheckInManager.changeBreweryRating(breweryRepository,beerRepository,beer);
-
+        Beer beer = checkInManager.createCheckin(checkinForm);
         return true;
     }
 }
