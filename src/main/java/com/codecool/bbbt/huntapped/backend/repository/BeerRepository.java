@@ -16,4 +16,6 @@ public interface BeerRepository extends JpaRepository<Beer, Long> {
     List<Beer> findByNameContainingIgnoreCase(String nameChunk);
 
     List<Beer> findByBrewery(Brewery brewery);
+
+    List<Beer> findByType(String type);
 }

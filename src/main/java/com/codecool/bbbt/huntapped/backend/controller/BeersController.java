@@ -30,4 +30,10 @@ public class BeersController {
     public List<Beer> getBeersByBreweryId(@PathVariable Long breweryId) {
         return beerRepository.findByBrewery(breweryRepository.findBreweryById(breweryId));
     }
+
+    @GetMapping("/beers/style={style}")
+    public List<Beer> getBeersByStyle(@PathVariable String style) {
+        log.info("Style is: " + style);
+        return beerRepository.findByType(style);
+    }
 }
