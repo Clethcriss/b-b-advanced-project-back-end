@@ -19,16 +19,10 @@ public class CheckinController {
     CheckInManager checkInManager;
 
     @Autowired
-    CheckinRepository checkinRepository;
-
-    @Autowired
     BeerRepository beerRepository;
 
     @Autowired
-    VenueRepository venueRepository;
-
-    @Autowired
-    BreweryRepository breweryRepository;
+    CheckinRepository checkinRepository;
 
     @PostMapping
     public boolean checkin(@RequestBody CheckinForm checkinForm) {
@@ -38,5 +32,8 @@ public class CheckinController {
         return true;
     }
 
-
+    @GetMapping("/beerid={value}")
+    public List<Checkin> getCheckinByBeer(@PathVariable("value") Long beerId) {
+        return checkinRepository.findByBeerId(beerId);
+    }
 }

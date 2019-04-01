@@ -11,4 +11,6 @@ import java.util.List;
 public interface CheckinRepository extends JpaRepository<Checkin,Long> {
 
     List<Checkin> findByBeer(Beer beer);
+
+    List<Checkin> findByBeerId(Long beerId);
 }

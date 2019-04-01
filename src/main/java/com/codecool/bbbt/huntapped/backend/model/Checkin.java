@@ -24,13 +24,13 @@ public class Checkin {
 
     private Double rating;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     private Beer beer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne
     private Venue venue;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne
     private User user;
 
     @Column(length=1000)
