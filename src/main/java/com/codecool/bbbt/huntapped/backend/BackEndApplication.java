@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class BackEndApplication {
 
 
     @Bean
+    @Profile("production")
     public CommandLineRunner init() {
         return args -> {
             RegisterForm registerForm = new RegisterForm();
