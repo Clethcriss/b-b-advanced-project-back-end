@@ -33,7 +33,7 @@ public class Checkin {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private User user;
 
-    @Lob
+    @Column(length=1000)
     private String description;
 
 
