@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -23,6 +24,8 @@ public class Checkin {
     private Long id;
 
     private Double rating;
+
+    private Date date;
 
     @ManyToOne
     private Beer beer;

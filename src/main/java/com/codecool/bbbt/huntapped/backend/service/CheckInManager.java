@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -68,6 +69,7 @@ public class CheckInManager {
         User user = userRepository.findUserByUsername(checkinForm.getUsername());
         Checkin checkin = new Checkin();
         checkin.setBeer(beer);
+        checkin.setDate(new Date());
         checkin.setDescription(checkinForm.getDescription());
         checkin.setRating(checkinForm.getRating());
         checkin.setUser(user);
