@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-public class Checkin {
+public class Checkin implements Comparable<Checkin> {
 
     @Id
     @GeneratedValue
@@ -39,5 +39,8 @@ public class Checkin {
     @Column(length=1000)
     private String description;
 
+    public int compareTo(Checkin checkin) {
+        return this.date.compareTo(checkin.getDate());
+    }
 
 }

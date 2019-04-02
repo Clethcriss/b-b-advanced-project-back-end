@@ -52,6 +52,7 @@ public class CheckinController {
             }
             checkins.addAll(checkinRepository.findByBeerId(beer.getId()));
         }
+        Collections.sort(checkins, Collections.reverseOrder());
         return checkins;
     }
 
