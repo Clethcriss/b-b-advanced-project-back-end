@@ -19,4 +19,7 @@ public interface CheckinRepository extends JpaRepository<Checkin,Long> {
 
     @Query("SELECT c FROM Checkin c WHERE venue_id = ?1 ORDER BY date DESC")
     List<Checkin> findByVenueId(Long venueId);
+
+    @Query("SELECT c FROM Checkin c WHERE user_id = ?1 ORDER BY date DESC")
+    List<Checkin> findByUserId(Long userId);
 }

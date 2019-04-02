@@ -61,4 +61,10 @@ public class CheckinController {
         List<Checkin> checkins = checkinRepository.findByVenueId(venueId);
         return checkins;
     }
+
+    @GetMapping("/userid={value}")
+    public List<Checkin> getCheckinByUser(@PathVariable("value") Long userId) {
+        List<Checkin> checkins = checkinRepository.findByUserId(userId);
+        return checkins;
+    }
 }
