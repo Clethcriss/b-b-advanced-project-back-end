@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -24,13 +25,15 @@ public class Checkin {
 
     private Double rating;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Date date;
+
+    @ManyToOne
     private Beer beer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne
     private Venue venue;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne
     private User user;
 
     @Column(length=1000)

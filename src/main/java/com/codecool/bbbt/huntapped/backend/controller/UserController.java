@@ -5,6 +5,7 @@ import com.codecool.bbbt.huntapped.backend.model.LoginForm;
 import com.codecool.bbbt.huntapped.backend.model.RegisterForm;
 import com.codecool.bbbt.huntapped.backend.model.ResponseString;
 import com.codecool.bbbt.huntapped.backend.model.User;
+import com.codecool.bbbt.huntapped.backend.model.UserForm;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,15 @@ public class UserController {
         log.info("Got user by id: {}. User is {}", id, user);
         return user;
     }
+
+    @GetMapping("/name={name}")
+    public UserForm getUserByName(@PathVariable("name") String name) {
+        User user = userRepository.findUserByUsername(name);
+        log.info("Got user by name: {}. User is {}", name, user);
+        UserForm userForm = new UserForm(user.getId(), user.getUsername(), user.getName(), user.getTotalCheckIns());
+        return userForm;
+    }
+
 
     @PostMapping("/register")
     public boolean registerUser(@RequestBody RegisterForm registerForm){
