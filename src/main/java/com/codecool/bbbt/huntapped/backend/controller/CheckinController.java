@@ -6,6 +6,7 @@ import com.codecool.bbbt.huntapped.backend.repository.*;
 import com.codecool.bbbt.huntapped.backend.service.CheckInManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -37,29 +38,30 @@ public class CheckinController {
         return true;
     }
 
-    @GetMapping("/beerid={value}")
-    public List<Checkin> getCheckinByBeer(@PathVariable("value") Long beerId) {
-        return checkinRepository.findByBeerId(beerId);
-    }
-
-    @GetMapping("/breweryid={value}")
-    public List<Checkin> getCheckinByBrewery(@PathVariable("value") Long breweryId) {
-        List<Beer> beers = beerRepository.findByBrewery(breweryRepository.findBreweryById(breweryId));
-        List<Checkin> checkins = null;
-        for (Beer beer : beers) {
-            if (checkins == null) {
-                checkins = checkinRepository.findByBeerId(beer.getId());
-            }
-            checkins.addAll(checkinRepository.findByBeerId(beer.getId()));
+    @GetMapping("/beerid={value}/limit={limit}/offset={offset}")
+    public List<Checkin> getCheckinByBeer(@PathVariable("value") Long beerId, @PathVariable("limit") Integer limit, @PathVariable("offset") Integer offset) {
+        List<Checkin> filteredCheckins = new ArrayList<>();
+        List<Checkin> checkins = checkinRepository.findByBeerId(beerId);
+        for (int i = offset; i < limit; i++) {
+            if (i < checkins.size() - 1) {
+                filteredCheckins.add(checkins.get(i));
+            } else break;
         }
-        Collections.sort(checkins, Collections.reverseOrder());
-        return checkins;
+        return filteredCheckins;
     }
 
-    @GetMapping("/venueid={value}")
-    public List<Checkin> getCheckinByVenue(@PathVariable("value") Long venueId) {
+
+    @GetMapping("/venueid={value}/limit={limit}/offset={offset}")
+    public List<Checkin> getCheckinByVenue(@PathVariable("value") Long venueId, @PathVariable("limit") Integer limit, @PathVariable("offset") Integer offset) {
+        List<Checkin> filteredCheckins = new ArrayList<>();
         List<Checkin> checkins = checkinRepository.findByVenueId(venueId);
-        return checkins;
+        for (int i = offset; i < limit; i++) {
+            if (i < checkins.size() - 1) {
+                filteredCheckins.add(checkins.get(i));
+            } else break;
+        }
+        log.info(filteredCheckins.toString());
+        return filteredCheckins;
     }
 
     @GetMapping("/userid={value}")
@@ -67,4 +69,5 @@ public class CheckinController {
         List<Checkin> checkins = checkinRepository.findByUserId(userId);
         return checkins;
     }
+
 }

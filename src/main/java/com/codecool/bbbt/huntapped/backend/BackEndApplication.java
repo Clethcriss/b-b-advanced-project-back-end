@@ -5,6 +5,7 @@ import com.codecool.bbbt.huntapped.backend.repository.BeerRepository;
 import com.codecool.bbbt.huntapped.backend.repository.BreweryRepository;
 import com.codecool.bbbt.huntapped.backend.repository.UserRepository;
 import com.codecool.bbbt.huntapped.backend.repository.VenueRepository;
+import com.codecool.bbbt.huntapped.backend.service.CheckInManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,6 +32,9 @@ public class BackEndApplication {
 
     @Autowired
     BreweryRepository breweryRepository;
+
+    @Autowired
+    CheckInManager checkInManager;
 
 
     public static void main(String[] args) {
@@ -223,6 +227,9 @@ public class BackEndApplication {
             beerRepository.saveAll(horizontBeers);
             for (Venue venue : venues) {
                 venueRepository.save(venue);
+            }
+            for (int i = 0; i < 42; i++) {
+                checkInManager.createCheckin(new CheckinForm("admin", "asd", new Double(2.5), new Long(5), new Long(13)));
             }
         };
     }
