@@ -229,7 +229,7 @@ public class BackEndApplication {
                 venueRepository.save(venue);
             }
             for (int i = 0; i < 42; i++) {
-                checkInManager.createCheckin(new CheckinForm("admin", "asd", new Double(2.5), new Long(5), new Long(13)));
+                checkInManager.createCheckin(new CheckinForm("admin", "Test comment", new Double(2.5), new Long(5), new Long(13)));
             }
         };
     }
