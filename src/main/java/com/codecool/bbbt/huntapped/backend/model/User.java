@@ -23,10 +23,8 @@ public class User {
     private Long id;
     private String username;
     private String name;
-    private String nickName;
     private int totalCheckIns;
     private String password;
-    private String passwordConfirm;
     private String email;
 
     public User(LoginForm loginForm){
