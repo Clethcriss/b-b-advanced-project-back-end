@@ -43,7 +43,7 @@ public class CheckinController {
         List<Checkin> filteredCheckins = new ArrayList<>();
         List<Checkin> checkins = checkinRepository.findByBeerId(beerId);
         for (int i = offset; i < limit; i++) {
-            if (i < checkins.size() - 1) {
+            if (i <= checkins.size() - 1) {
                 filteredCheckins.add(checkins.get(i));
             } else break;
         }
@@ -56,11 +56,10 @@ public class CheckinController {
         List<Checkin> filteredCheckins = new ArrayList<>();
         List<Checkin> checkins = checkinRepository.findByVenueId(venueId);
         for (int i = offset; i < limit; i++) {
-            if (i < checkins.size() - 1) {
+            if (i <= checkins.size() - 1) {
                 filteredCheckins.add(checkins.get(i));
             } else break;
         }
-        log.info(filteredCheckins.toString());
         return filteredCheckins;
     }
 
