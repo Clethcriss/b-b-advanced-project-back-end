@@ -63,10 +63,17 @@ public class CheckinController {
         return filteredCheckins;
     }
 
-    @GetMapping("/userid={value}")
-    public List<Checkin> getCheckinByUser(@PathVariable("value") Long userId) {
+    @GetMapping("/userid={value}/limit={limit}/offset={offset}")
+    public List<Checkin> getCheckinByUser(@PathVariable("value") Long userId, @PathVariable("limit") Integer limit, @PathVariable("offset") Integer offset) {
+        List<Checkin> filteredCheckins = new ArrayList<>();
+
         List<Checkin> checkins = checkinRepository.findByUserId(userId);
-        return checkins;
+        for (int i = offset; i < limit; i++) {
+            if (i <= checkins.size() - 1) {
+                filteredCheckins.add(checkins.get(i));
+            } else break;
+        }
+        return filteredCheckins;
     }
 
 }
