@@ -30,10 +30,12 @@ public class CheckinController {
     @Autowired
     CheckinRepository checkinRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping
     public boolean checkin(@RequestBody CheckinForm checkinForm) {
         log.info("Creating checkin with form: " + checkinForm.toString());
-
         Beer beer = checkInManager.createCheckin(checkinForm);
         return true;
     }

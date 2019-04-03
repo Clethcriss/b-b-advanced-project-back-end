@@ -75,6 +75,7 @@ public class CheckInManager {
         checkin.setUser(user);
         checkin.setVenue(venue);
         checkinRepository.save(checkin);
+        userRepository.incrementNumberOfRatingsByUsername(checkin.getUser().getUsername());
         log.info("User: {} checked in beer {} with a rating: {}",checkin.getUser().getUsername(), checkin.getBeer(),checkin.getRating());
         this.changeBeerRating(beer);
         return beer;
